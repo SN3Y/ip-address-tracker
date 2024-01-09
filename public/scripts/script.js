@@ -16,8 +16,16 @@ var greenIcon = L.icon({
 
 let lat = datosAPi.location.lat
 let lng = datosAPi.location.lng
+
 var  map = L.map('map').setView([lat, lng], 17);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19, 
         }).addTo(map)
     L.marker([lat,lng],{icon:greenIcon}).addTo(map);
+
+btn.addEventListener('click', (e)=>{
+    if(lat === 0 && lng === 0 ) {
+        alert('Dirección Ip errónea'); alert('Dirección Ip errónea') 
+        e.preventDefault()
+    }
+})

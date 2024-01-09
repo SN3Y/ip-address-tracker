@@ -15,7 +15,9 @@ controller.searching = async (req, res) => {
     const {ipInput} = req.body;
     const data =  fetch(`https://geo.ipify.org/api/v2/country,city,vpn?apiKey=${api}&ipAddress=${ipInput}`);
     await  data.then(res => res.json()).then(info => {
+
     res.render('index',{info})
+        
     });
 }
 
