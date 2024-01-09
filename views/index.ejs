@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+  <link rel="stylesheet" href="/styles/style.css">
+  <title>IP Address Tracker</title>
+</head>
+<div class="hidden invisible" id="datos" data-api-datos= "<%= JSON.stringify(info) %>"></div>
+<body class="flex justify-center h-screen w-screen font-rubik relative">
+  <section class="grid bg-mobile md:bg-desktop bg-cover bg-no-repeat h-[100%] w-screen justify-center relative">
+    <div class="grid h-[100%]">
+      <div class="grid grid-rows-3 w-screen justify-center pt-4 z-10 relative">
+        <h1 class="text-white text-center font-semibold">IP Adrress Tracker</h1>
+        <form action="/search" method="post" class="flex w-[300px] md:w-[600px] h-12">
+          <input id="input-map" name="ipInput" type="text" placeholder="Search for any IP adress or domain" value="<%= info.ip %>" class="px-6 w-10/12 rounded-s-xl">
+          <button type="submit" class="btn bg-black flex items-center w-2/12 rounded-e-xl justify-center">
+            <img src="/images/icon-arrow.svg" alt="icon-arrow">
+          </button>
+        </form>
+        <div class="grid h-fit w-[80vw] py-6 bg-white rounded-xl shadow-gray shadow-md absolute
+         bottom-[-52%] md:grid-cols-4 md:bottom-[-18%] left-[10%] z-10 justify-center">
+          <span class="text-gray text-center text-xs lg:border-e-[1px] font-bold">
+            IP ADRESS
+            <h1 class="label-ip text-dark-gray mb-2 text-xl font-bold"><%= info.ip %></h1>
+          </span>
+          <span class="text-gray text-center text-xs lg:border-e-[1px] border-gray font-bold">
+            LOCATION
+            <h1 class="label-location text-dark-gray mb-2 text-xl font-bold"><%= info.location.city %></h1>
+          </span>
+          <span  class="text-gray text-center text-xs lg:border-e-[1px] font-bold">
+            TIMEZONE
+            <h1 class="label-timezone text-dark-gray mb-2 text-xl font-bold"><%= info.location.timezone %></h1>
+          </span>
+          <span class="text-gray text-center text-xs font-bold">
+            ISP
+            <h1 class="label-isp text-dark-gray mb-2 text-xl font-bold"><%= info.isp %></h1>
+          </span>
+        </div>
+      </div>
+
+      </div>
+    <div class="grid h-[50vh] w-screen">
+      <div id="map" class="h-[100vh] w-full z-0"></div>
+    </div>
+  </section>
+  
+ 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin="">
+  </script>
+  <script src="/scripts/script.js" type="module"></script>
+  
+</body>
+
+</html>
